@@ -15,7 +15,6 @@ export const sortContacts = (contacts: Contact[]) => {
 };
 
 export const search = (key: string, contactList: Contact[]) => {
-  console.log(key, "key", contactList);
   if (key === "") {
     return contactList;
   }
