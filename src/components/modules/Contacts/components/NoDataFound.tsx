@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     flex: 1,
-    marginTop: height / 2.5,
+    marginTop: height / 3.5,
   },
   noDataFoundText: {
     fontWeight: "500",

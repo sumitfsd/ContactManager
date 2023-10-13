@@ -4,7 +4,6 @@ import {
   StyleSheet,
   FlatList,
   RefreshControl,
-  Text,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "expo-contacts";
@@ -57,9 +56,6 @@ const ContactListScreen = (): JSX.Element => {
 
   const renderContactListItem = ({ item }: { item: Contact }) => {
     if (!item?.name?.toLowerCase().includes(searchQuery?.toLowerCase())) {
-      if (filteredList?.length === 0) {
-        return <NoDataFound />;
-      }
       return;
     }
     return (
@@ -100,17 +96,23 @@ const ContactListScreen = (): JSX.Element => {
     return <Loader />;
   }
 
+  const showEmptyView =
+    filteredList?.length === 0 &&
+    !`${favContactDetail?.firstName} ${favContactDetail?.lastName}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {favouriteContactId &&
         favContactDetail &&
         renderContactListItem({ item: favContactDetail as Contact })}
+      {showEmptyView && <NoDataFound />}
       <FlatList
         windowSize={WINDOW_SIZE}
         maxToRenderPerBatch={MAX_TO_RENDER_PER_BATCH}
         keyExtractor={(item) => item.id}
-        // ListEmptyComponent={<NoDataFound />}
         data={filteredList}
         renderItem={({ item }: { item: Contact }) => {
           if (favContactId === item.id) {
