@@ -4,7 +4,7 @@ A react-native contact app that show the list of contacts and contact's detail.
 
 ## How it works
 
-![](https://github.com/sumitfsd/ContactManager/blob/main/assets/gif/ContactManagerApp.gif)
+![](https://github.com/sumitfsd/ContactManager/blob/main/src/assets/gif/ContactManagerApp.gif)
 
 ## Installation
 
